@@ -1,7 +1,7 @@
 var sign = require('./index.js');
 
 var s3Signature = sign({
-  awsSecret:process.env.MY_S3_AWS_SECRET,
+  awsSecret:"SEC",
   bucket:'mybucket',
   acl:'private',
   key:'some/key.txt',
