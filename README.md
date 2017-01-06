@@ -1,6 +1,6 @@
 #aws-s3-sign
 ---
-Generates a policy and signature for posting files via CORS to amazon Amazon S3.
+Generates a policy and signature for posting files via CORS to Amazon S3.
 
 **Install**
 ```bash

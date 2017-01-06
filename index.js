@@ -12,7 +12,7 @@ var sign = function(options){
   }
   var options = Object.assign(default_options, options);
   var policy = {
-      'expiration': (new Date(((new Date()).getTime()+options.expire))).toISOString(), // . ".000Z",
+      'expiration': (new Date(((new Date()).getTime()+options.expire))).toISOString(),
       'conditions': {
         'bucket': options.bucket,
         'acl': options.acl,
@@ -26,7 +26,7 @@ var sign = function(options){
   var generator = crypto.createHmac('sha1', options.awsSecret);
   generator.update(base64);
   var signature = generator.digest('base64')
-  return {signature:signature, policy:policy, key:options.key};
+  return {signature:signature, policy:base64, key:options.key};
 }
 
 module.exports = sign;
