@@ -7,19 +7,23 @@ var sign = function(options){
     bucket:'',
     acl:'private',
     key:'',
-    expire: 300, //seconds till expire
-    contentType:'application/octet-stream'
+    expire: 300 //seconds till expire
+    //contentType:'application/octet-stream'
   }
   var options = Object.assign(default_options, options);
+
   var policy = {
-      'expiration': (new Date(((new Date()).getTime()+options.expire))).toISOString(),
-      'conditions': {
-        'bucket': options.bucket,
-        'acl': options.acl,
-        'key': options.key,
-        'Content-Type': options.contentType
-      }
+    expiration: (new Date(((new Date()).getTime()+options.expire))).toISOString(),
+    conditions: {
+      bucket: options.bucket,
+      acl: options.acl,
+      key: options.key
+    }
   };
+  if(options.contentType){
+    policy['Content-Type'] = options.contentType;
+  }
+
   var json = JSON.stringify(policy);
   var base64 = (new Buffer(json)).toString('base64');
 
