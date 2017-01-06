@@ -1,0 +1,11 @@
+{
+  "name": "aws-s3-sign",
+  "version": "1.0.0",
+  "description": "CORS upload signature for Amazon S3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian Robinson (dudewheresmycode)",
+  "license": "MIT"
+}
