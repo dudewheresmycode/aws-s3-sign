@@ -22,7 +22,7 @@ var sign = function(options){
     ]
   };
   if(options.contentType){
-    policy['Content-Type'] = options.contentType;
+    policy.conditions.push({'Content-Type': options.contentType});
   }
 
   var json = JSON.stringify(policy);
