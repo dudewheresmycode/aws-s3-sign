@@ -3,7 +3,9 @@
 Generates a policy and signature for posting files via CORS to amazon Amazon S3.
 
 **Install**
+```bash
 npm i --save aws-s3-sign
+```
 
 **Usage**
 
