@@ -8,22 +8,19 @@ var sign = function(options){
     acl:'private',
     key:'',
     expire: 300 //seconds till expire
-    //contentType:'application/octet-stream'
   }
   var options = Object.assign(default_options, options);
-  var expire = (new Date(((new Date()).getTime()+(options.expire*1000)))).toISOString();
+  var expiration = (new Date(((new Date()).getTime()+(options.expire*1000)))).toISOString();
 
   var policy = {
-    expiration: expire,
+    expiration: expiration,
     conditions: [
       {bucket: options.bucket},
       {acl: options.acl},
-      {key: options.key}
+      {key: options.key},
+      ["starts-with", "$Content-Type", ""]
     ]
   };
-  if(options.contentType){
-    policy.conditions.push({'Content-Type': options.contentType});
-  }
 
   var json = JSON.stringify(policy);
   var base64 = (new Buffer(json)).toString('base64');
@@ -31,7 +28,7 @@ var sign = function(options){
   var generator = crypto.createHmac('sha1', options.awsSecret);
   generator.update(base64);
   var signature = generator.digest('base64')
-  return {signature:signature, policy:base64, expires:expire, key:options.key};
+  return {signature:signature, policy:base64, expiration:expiration, key:options.key};
 }
 
 module.exports = sign;

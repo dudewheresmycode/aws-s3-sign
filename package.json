@@ -1,6 +1,6 @@
 {
   "name": "aws-s3-sign",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "CORS upload signature for Amazon S3",
   "main": "index.js",
   "scripts": {
